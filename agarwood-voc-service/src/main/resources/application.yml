@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: agarwood-voc-service
+server:
+  port: 9001
+  servlet:
+    encoding:
+      enabled: true
+      force: true
+      charset: UTF-8
+
+logging:
+  level:
+    com.agarwood.voc: debug
