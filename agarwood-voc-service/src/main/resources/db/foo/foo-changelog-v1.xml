@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="T001-20260224-yyg-001" author="yyg">
+
+        <createTable remarks="演示表" tableName="foo">
+            <column name="id" type="VARCHAR(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="code" type="VARCHAR(64)" remarks="编码"/>
+            <column name="name" type="VARCHAR(64)" remarks="名称"/>
+        </createTable>
+
+        <sql>
+            INSERT INTO foo (id, code, name)
+            VALUES ('1', 'FOO_001', '测试数据1'),
+                   ('2', 'FOO_002', '测试数据2');
+        </sql>
+    </changeSet>
+
+    <changeSet id="T001-20260224-yyg-002" author="yyg">
+        <addColumn tableName="foo">
+            <column name="is_deleted" type="tinyint" remarks="是否删除 0未删除，1已删除" defaultValueNumeric="0"/>
+            <column name="create_time" type="datetime" remarks="创建时间" defaultValueDate="current_timestamp"/>
+            <column name="create_by" type="varchar(64)" remarks="创建人"/>
+            <column name="update_time" type="datetime" remarks="更新时间" defaultValueDate="current_timestamp"/>
+            <column name="update_by" type="varchar(64)" remarks="更新人"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

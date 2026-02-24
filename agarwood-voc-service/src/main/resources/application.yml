@@ -1,6 +1,14 @@
 spring:
   application:
     name: agarwood-voc-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/agarwood_voc?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: Mysql.123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog-master.xml
 server:
   port: 9001
   servlet:
