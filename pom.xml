@@ -33,6 +33,8 @@
         <hutool.version>5.8.43</hutool.version>
         <jwt.version>0.12.3</jwt.version>
         <minio.version>8.6.0</minio.version>
+
+        <agarwood.version>1.0-SNAPSHOT</agarwood.version>
     </properties>
 
     <dependencyManagement>
@@ -111,6 +113,12 @@
                 <groupId>io.minio</groupId>
                 <artifactId>minio</artifactId>
                 <version>${minio.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.agarwood</groupId>
+                <artifactId>agarwood-components-mybatis</artifactId>
+                <version>${agarwood.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -12,4 +12,8 @@
     <artifactId>agarwood-components</artifactId>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>agarwood-components-mybatis</module>
+    </modules>
+
 </project>
