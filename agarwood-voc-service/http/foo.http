@@ -1,0 +1,33 @@
+### 查询所有
+GET http://localhost:9001/foo/list
+
+### 分页查询（第一页，每页2条）
+GET http://localhost:9001/foo/page?pageNum=1&pageSize=2
+
+### 分页查询（第二页，每页3条）
+GET http://localhost:9001/foo/page?pageNum=2&pageSize=3
+
+### 保存
+POST http://localhost:9001/foo
+Content-Type: application/json
+
+{
+  "code": "FOO_009",
+  "name": "测试数据9"
+}
+
+### 更新
+PUT http://localhost:9001/foo
+Content-Type: application/json
+
+{
+  "id": "1",
+  "code": "FOO_001",
+  "name": "更新后的测试数据1---m"
+}
+
+### 删除
+DELETE http://localhost:9001/foo/2
+
+### 根据 ID 查询
+GET http://localhost:9001/foo/1
