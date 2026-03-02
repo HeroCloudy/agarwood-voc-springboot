@@ -1,6 +1,8 @@
 package com.agarwood.components.mybatis.config;
 
+import com.agarwood.components.mybatis.handler.AgMetaObjectHandler;
 import com.baomidou.mybatisplus.annotation.DbType;
+import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
@@ -30,5 +32,11 @@ public class MyBatisPlusConfig {
             interceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
         }
         return interceptor;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(MetaObjectHandler.class)
+    public MetaObjectHandler metaObjectHandler() {
+        return new AgMetaObjectHandler(properties);
     }
 }

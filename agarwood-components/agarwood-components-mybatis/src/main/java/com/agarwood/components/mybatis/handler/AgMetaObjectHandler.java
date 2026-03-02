@@ -2,19 +2,15 @@ package com.agarwood.components.mybatis.handler;
 
 import com.agarwood.components.mybatis.config.MyBatisPlusProperties;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
-import jakarta.annotation.Resource;
+import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.reflection.MetaObject;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-@Component
-@ConditionalOnMissingBean(MetaObjectHandler.class)
+@RequiredArgsConstructor
 public class AgMetaObjectHandler implements MetaObjectHandler {
 
-    @Resource
-    private MyBatisPlusProperties properties;
+    private final MyBatisPlusProperties properties;
 
     private String getCurrentUserId() {
         return "SYS_DEFAULT";
