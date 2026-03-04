@@ -12,6 +12,7 @@
     <modules>
         <module>agarwood-components</module>
         <module>agarwood-voc-service</module>
+        <module>agarwood-service-basic</module>
     </modules>
 
     <properties>
@@ -118,6 +119,12 @@
             <dependency>
                 <groupId>com.agarwood</groupId>
                 <artifactId>agarwood-components-mybatis</artifactId>
+                <version>${agarwood.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.agarwood</groupId>
+                <artifactId>agarwood-service-basic</artifactId>
                 <version>${agarwood.version}</version>
             </dependency>
         </dependencies>

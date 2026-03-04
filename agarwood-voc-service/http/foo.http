@@ -30,4 +30,4 @@ Content-Type: application/json
 DELETE http://localhost:9001/foo/2
 
 ### 根据 ID 查询
-GET http://localhost:9001/foo/1
+GET http://localhost:9001/foo/111

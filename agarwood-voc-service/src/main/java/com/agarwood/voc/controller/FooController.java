@@ -1,9 +1,14 @@
 package com.agarwood.voc.controller;
 
+import com.agarwood.common.exception.CommonException;
+import com.agarwood.common.vo.PageInfo;
+import com.agarwood.common.vo.PageReq;
+import com.agarwood.common.vo.Result;
 import com.agarwood.voc.entity.Foo;
 import com.agarwood.voc.service.FooService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,36 +21,42 @@ public class FooController {
 
     private final FooService fooService;
 
-    @GetMapping("list")
-    public List<Foo> list() {
-        return fooService.list();
+    @GetMapping("/list")
+    public Result<List<Foo>> list() {
+        return Result.ok(fooService.list());
     }
 
     @GetMapping("page")
-    public IPage<Foo> page(
-            @RequestParam(defaultValue = "1") Integer pageNum,
-            @RequestParam(defaultValue = "10") Integer pageSize) {
-        Page<Foo> page = new Page<>(pageNum, pageSize);
-        return fooService.page(page);
+    public Result<PageInfo<Foo>> page(PageReq pageReq) {
+        Page<Foo> req = new Page<>(pageReq.getPageNo(), pageReq.getPageSize());
+        Page<Foo> result = fooService.page(req);
+        return Result.ok(new PageInfo<>(result.getTotal(), result.getRecords()));
     }
 
     @PostMapping()
-    public boolean save(@RequestBody Foo foo) {
-        return fooService.save(foo);
+    public Result<Void> save(@Valid @RequestBody Foo foo) {
+        fooService.save(foo);
+        return Result.ok();
     }
 
     @PutMapping()
-    public boolean update(@RequestBody Foo foo) {
-        return fooService.updateById(foo);
+    public Result<Void> update(@RequestBody Foo foo) {
+        fooService.updateById(foo);
+        return Result.ok();
     }
 
     @DeleteMapping("{id}")
-    public boolean delete(@PathVariable String id) {
-        return fooService.removeById(id);
+    public Result<Void> delete(@PathVariable String id) {
+        fooService.removeById(id);
+        return Result.ok();
     }
 
     @GetMapping("{id}")
-    public Foo get(@PathVariable String id) {
-        return fooService.getById(id);
+    public Result<Foo> get(@PathVariable String id) {
+        Foo foo = fooService.getById(id);
+        if (foo == null) {
+            throw new CommonException("数据不存在");
+        }
+        return Result.ok();
     }
 }

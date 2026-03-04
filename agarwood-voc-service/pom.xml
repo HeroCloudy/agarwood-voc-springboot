@@ -30,6 +30,11 @@
             <groupId>com.agarwood</groupId>
             <artifactId>agarwood-components-mybatis</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.agarwood</groupId>
+            <artifactId>agarwood-service-basic</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
