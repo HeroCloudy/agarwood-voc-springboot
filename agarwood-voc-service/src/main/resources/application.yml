@@ -43,7 +43,31 @@ mybatis-plus:
       logic-delete-value: 1
       logic-not-delete-value: 0
 
+springdoc:
+  swagger-ui:
+    enabled: true
+  api-docs:
+    enabled: true
+  group-configs:
+    - group: 全部接口
+      paths-to-match:
+        - /**
+    - group: 测试接口
+      paths-to-match:
+        - /foo/**
+
 agarwood:
   mybatis-plus:
     pagination: true
     auto-fill: true
+  doc:
+    info:
+      title: Agarwood VOC 接口文档
+      description: Agarwood VOC 智能问卷系统接口文档，包含问卷管理、问卷填写、数据统计等功能
+      version: v1.0.0
+      license:
+        name: Apache 2.0
+        url: https://www.apache.org/licenses/LICENSE-2.0
+    external-docs:
+      description: 项目文档
+      url: https://github.com/HeroCloudy/agarwood-voc-springboot

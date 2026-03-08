@@ -127,6 +127,12 @@
                 <artifactId>agarwood-service-basic</artifactId>
                 <version>${agarwood.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.agarwood</groupId>
+                <artifactId>agarwood-components-doc</artifactId>
+                <version>${agarwood.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
